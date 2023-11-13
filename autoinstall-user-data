@@ -1,0 +1,63 @@
+#cloud-config
+autoinstall:
+  apt:
+    disable_components: []
+    fallback: abort
+    geoip: true
+    mirror-selection:
+      primary:
+      - country-mirror
+      - arches:
+        - amd64
+        - i386
+        uri: http://archive.ubuntu.com/ubuntu
+      - arches:
+        - s390x
+        - arm64
+        - armhf
+        - powerpc
+        - ppc64el
+        - riscv64
+        uri: http://ports.ubuntu.com/ubuntu-ports
+    preserve_sources_list: false
+  codecs:
+    install: false
+  drivers:
+    install: false
+  identity:
+    hostname: auto
+    password: $6$sUmDZZW/xIm5kwja$A4cj4TyJjLZuXM9DvSj.yJP0fKVfo6YnBVytv1ajJUSFiaR7gQwuKN8lW5lnzWoZd4B/8yYrSJu4EgSSSwfx..
+    realname: greenadmin
+    username: greenadmin
+  kernel:
+    package: linux-generic
+  keyboard:
+    layout: us
+    toggle: null
+    variant: ''
+  locale: en_US.UTF-8
+  network:
+    ethernets:
+      enX0:
+        critical: true
+        dhcp-identifier: mac
+        dhcp4: true
+        nameservers:
+          addresses:
+          - 192.168.1.1
+          search:
+          - greendusk.portal
+    version: 2
+  source:
+    id: ubuntu-server
+    search_drivers: false
+  ssh:
+    allow-pw: true
+    authorized-keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCoRbyZ2B0oJrXTQb5cBufsYTNmAQkhh8alnpeGKdyMuTfwUiDUYZDPymuihGROOTV1c21Yf2IVfQMIMEndW/yp+TCSa1IDTu+xAfQjijAcbEHJFmwJELbCCSRUsy9kaG85r3633celDsDPOuZMOaxqD7On8OsWCen8C9eql7YhswS1rys0BZgIKPszBbrqwJhslZrSu3uAfchFIgbqPwblNyjqTWVQCJYjcWkKO37/7jHkSZLgp4vIT0fQW9YzACmOVGXzfZby28ICBubi8trIGGBbd9dzhIBP/79zmK1TozcPDKw9FKHBPltiJ+OU3evLbh1kizkDqSWuTMa4Z1621BRv//0vK/DxEdIlZRxIJ3SlrbQ+6cOXfRkGy3AmkAXiNCNVsv7plHOL+afHYdxjBVZwiSbEJsTItuDChS8MlynYzyFDQtL09eIswMWq33cEphqbIOzEitPjEV0Ej/Zp6DdRJw1RukUGmXcRhkN3ABCPKjeFP1Ew6Il3kxBcbsuFW76+Hm9g07764N40QiTk8Th55T+yRJVNFDGU0Ht9N9Hug+lcR86lW03jYHk0oJ4B0wT16rliDfrkWgAzS3LNjOlL92DDbdx8t7PrHQiXd5eIBr/o7rBpWhyGiu39OhsTHtgCp55bDsdv/nQPwsuu92uenrLTXaRlePe2EtNIkw==
+      greendusk@github/90444759 # ssh-import-id gh:greendusk'
+    - 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDkgGtcBarSkQG8xnZnoQcsVgQUbdix81Li7ZLRSmF+
+      greendusk@github/90494362 # ssh-import-id gh:greendusk'
+    install-server: true
+  updates: security
+  version: 1
